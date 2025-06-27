@@ -20,6 +20,12 @@ Run the `deploy:panel` script to upload the .ch5z to a touch panel as local proj
 
 ## Authentication
 Historically authenticating a CH5 session is handled by a redirect initiated by the WebXPanel library to the processor/server authentication service. However since CH5 2.8.0 an authentication token can be created on the processor/server instead of requiring manual user input for authentication. For processors (4-series only) this is handled via the ```websockettoken generate``` command. On VirtualControl servers the token is generated in the [web interface](https://docs.crestron.com/en-us/8912/content/topics/configuration/Web-Configuration.htm?#Tokens)
+Use the command ```websockettoken``` to get the current token is already generated.
+
+## Processor Configuration for localhost testing
+Use the command ```webserver allowsharedsession``` to check the current value. If necessary, use ```webserver allowsharedsession on``` to enable this setting.
+In the processor web GUI, go to Settings > System Setup > Web XPanel and ensure ```Web XPanel Enabled``` is set to true.
+Keep in mind we have to use the memory router when this panel runs on the control system directly. When using the app, only programmatic routing will work.
 
 ## The entry point
 The entry point is where the Crestron libraries (UMD) will be loaded into the application. In this demo index.html is treated as the entry point for the Crestron libraries.
