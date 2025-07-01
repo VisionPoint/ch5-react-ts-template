@@ -8,10 +8,19 @@ import {
 	createTheme,
 	ThemeProvider,
 	StyledEngineProvider,
+	lighten,
 } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppLayout from './components/AppLayout';
-import Typography from '@mui/material/Typography';
+
+// Pages
+import AdminPage from './pages/AdminPage';
+import Seat1Page from './pages/Seat1Page';
+import Seat2Page from './pages/Seat2Page';
+import Seat3Page from './pages/Seat3Page';
+import Seat4Page from './pages/Seat4Page';
+import Seat5Page from './pages/Seat5Page';
+import SupervisorPage from './pages/SuperVisorPage';
 
 // Initialize eruda for panel/app debugging capabilities (in dev mode only)
 if (import.meta.env.VITE_APP_ENV === 'development') {
@@ -30,12 +39,32 @@ const router = createRouter([
 		element: <AppLayout />,
 		children: [
 			{
-				path: 'test',
-				element: <Typography>Test Page</Typography>,
+				path: 'seat1',
+				element: <Seat1Page />,
 			},
 			{
-				path: 'test2',
-				element: <Typography>Test Page 2</Typography>,
+				path: 'seat2',
+				element: <Seat2Page />,
+			},
+			{
+				path: 'seat3',
+				element: <Seat3Page />,
+			},
+			{
+				path: 'seat4',
+				element: <Seat4Page />,
+			},
+			{
+				path: 'seat5',
+				element: <Seat5Page />,
+			},
+			{
+				path: 'supervisor',
+				element: <SupervisorPage />,
+			},
+			{
+				path: 'admin',
+				element: <AdminPage />,
 			},
 		],
 	},
@@ -61,7 +90,7 @@ function App() {
 					palette: {
 						mode: 'dark',
 						primary: {
-							main: '#1E2A44',
+							main: '#1E2A44', // Lighten the primary color for better contrast
 						},
 						secondary: {
 							main: '#12A8DF',
@@ -74,6 +103,18 @@ function App() {
 						// 	primary: 'rgba(0, 0, 0, 0.87)',
 						// 	secondary: 'rgba(0, 0, 0, 0.87) !important',
 						// },
+					},
+					mixins: {
+						toolbar: {
+							minHeight: 100,
+							'@media (min-width:0px) and (orientation: landscape)':
+								{
+									minHeight: 100,
+								},
+							'@media (min-width:600px)': {
+								minHeight: 100,
+							},
+						},
 					},
 				})}
 			>

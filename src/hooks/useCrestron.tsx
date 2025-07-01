@@ -1,34 +1,24 @@
 import * as React from 'react';
 
-export declare interface IBaseState<T> {
-	value: T;
-}
-export declare interface IBaseEventAction<T> {
-	setValue: (value: T) => void;
-}
-export declare interface IBaseSignal<TState, TAction> {
-	state: TState;
-	action: TAction;
-}
+export declare type IBaseState<T> = T;
+export declare type IBaseEventAction<T> = (value: T) => void;
+
+export declare type IBaseSignal<TState, TAction> = [TState, TAction];
 export declare type StateCallback<T> = (value: T, signalName?: string) => void;
 
 export function useCrestronPublish<T extends number | string | boolean>(
 	signalType: 'number' | 'string' | 'boolean',
 	signalName: string
-): [IBaseEventAction<T>] {
-	return [
-		{
-			setValue: (value: T) =>
-				window.CrComLib.publishEvent(signalType, signalName, value),
-		},
-	];
+): IBaseEventAction<T> {
+	return (value: T) =>
+		window.CrComLib.publishEvent(signalType, signalName, value);
 }
 
 export function useCrestronSubscribe<T extends number | string | boolean>(
 	signalType: 'number' | 'string' | 'boolean',
 	signalName: string,
 	callback?: StateCallback<T>
-): [IBaseState<T>] {
+): IBaseState<T> {
 	const [state, setState] = React.useState<T>(
 		(signalType === 'number'
 			? 0
@@ -60,16 +50,16 @@ export function useCrestronSubscribe<T extends number | string | boolean>(
 		};
 	}, [signalType, signalName]);
 
-	return [{ value: state }];
+	return state;
 }
 
 export function useCrestronSignal<T extends number | string | boolean>(
 	signalType: 'number' | 'string' | 'boolean',
 	signalName: string,
 	callback?: StateCallback<T>
-): [IBaseSignal<IBaseState<T>, IBaseEventAction<T>>] {
-	const [state] = useCrestronSubscribe(signalType, signalName, callback);
-	const [action] = useCrestronPublish(signalType, signalName);
+): IBaseSignal<IBaseState<T>, IBaseEventAction<T>> {
+	const state = useCrestronSubscribe(signalType, signalName, callback);
+	const action = useCrestronPublish(signalType, signalName);
 
-	return [{ state, action }];
+	return [state, action];
 }

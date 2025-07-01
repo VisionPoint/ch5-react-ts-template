@@ -114,3 +114,25 @@ function App() {
    )
 }
 ```
+
+### Installing Font Awesome
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/fontawesome-svg-core
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/free-brands-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/pro-solid-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/pro-regular-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/pro-light-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/pro-thin-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/pro-duotone-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install s--save @fortawesome/duotone-regular-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/duotone-light-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/duotone-thin-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-solid-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-regular-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-light-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-thin-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-duotone-solid-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-duotone-regular-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-duotone-light-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/sharp-duotone-thin-svg-icons
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/react-fontawesome
+FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/free-solid-svg-icons
