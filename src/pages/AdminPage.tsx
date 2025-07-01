@@ -160,107 +160,96 @@ const VideoWallContainer = ({ layoutEditMode }: VideoWallContainerProps) => {
 	const [group5, setGroup5] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
-		setGroup1(
+		const _group1 =
 			validGroups.group1.every((id) => displaysChecked.includes(id)) &&
-				!group2
-		);
+			!group2;
 
-		setGroup2(
+		const _group2 =
 			validGroups.group2.every((id) => displaysChecked.includes(id)) &&
-				!group1 &&
-				!group3
-		);
-		setGroup3(
+			!group1 &&
+			!group3;
+		const _group3 =
 			validGroups.group3.every((id) => displaysChecked.includes(id)) &&
-				!group2 &&
-				!group4
-		);
-		setGroup4(
+			!group2 &&
+			!group4;
+		const _group4 =
 			validGroups.group4.every((id) => displaysChecked.includes(id)) &&
-				!group3 &&
-				!group5
-		);
-		setGroup5(
+			!group3 &&
+			!group5;
+		const _group5 =
 			validGroups.group5.every((id) => displaysChecked.includes(id)) &&
-				!group4
-		);
+			!group4;
 
-		// if (
-		// 	validGroups.group1.every((id) => displaysChecked.includes(id)) &&
-		// 	!group2
-		// ) {
-		// 	setGroup1(true);
-		// }
-		// if (
-		// 	validGroups.group2.every((id) => displaysChecked.includes(id)) &&
-		// 	!group1 &&
-		// 	!group3
-		// ) {
-		// 	setGroup2(true);
-		// }
-		// if (
-		// 	validGroups.group3.every((id) => displaysChecked.includes(id)) &&
-		// 	!group2 &&
-		// 	!group4
-		// ) {
-		// 	setGroup3(true);
-		// }
-		// if (
-		// 	validGroups.group4.every((id) => displaysChecked.includes(id)) &&
-		// 	!group3 &&
-		// 	!group5
-		// ) {
-		// 	setGroup4(true);
-		// }
-		// if (
-		// 	validGroups.group5.every((id) => displaysChecked.includes(id)) &&
-		// 	!group4
-		// ) {
-		// 	setGroup5(true);
-		// }
+		if (_group1 !== group1) {
+			setGroup1(_group1);
+			return;
+		}
+
+		if (_group2 !== group2) {
+			setGroup2(_group2);
+			return;
+		}
+
+		if (_group3 !== group3) {
+			setGroup3(_group3);
+			return;
+		}
+
+		if (_group4 !== group4) {
+			setGroup4(_group4);
+			return;
+		}
+
+		if (_group5 !== group5) {
+			setGroup5(_group5);
+			return;
+		}
 	}, [displaysChecked, group1, group2, group3, group4, group5]);
 
-	const handleGroupSelection = React.useCallback(
-		(index: number, checked: boolean) => {
-			setDisplaysChecked((prev) => {
-				if (checked) {
-					return Array.from(new Set([...prev, index]));
-				}
-
-				prev = prev.filter((id) => id !== index);
-
-				// If unchecked, remove the index from the array along with any grouped indices
-				if (group1 && validGroups.group1.includes(index)) {
-					prev = prev.filter(
-						(id) => !validGroups.group1.includes(id)
-					);
-				}
-				if (group2 && validGroups.group2.includes(index)) {
-					prev = prev.filter(
-						(id) => !validGroups.group2.includes(id)
-					);
-				}
-				if (group3 && validGroups.group3.includes(index)) {
-					prev = prev.filter(
-						(id) => !validGroups.group3.includes(id)
-					);
-				}
-				if (group4 && validGroups.group4.includes(index)) {
-					prev = prev.filter(
-						(id) => !validGroups.group4.includes(id)
-					);
-				}
-				if (group5 && validGroups.group5.includes(index)) {
-					prev = prev.filter(
-						(id) => !validGroups.group5.includes(id)
-					);
-				}
-
-				return Array.from(new Set(prev));
+	const handleGroupSelection = (index: number, checked: boolean) => {
+		setDisplaysChecked((prev) => {
+			console.log('handleGroupSelection', {
+				index,
+				checked,
+				displaysChecked: Array.from(prev),
+				group1,
+				validGroup1: validGroups.group1.includes(index),
+				group2,
+				validGroup2: validGroups.group2.includes(index),
+				group3,
+				validGroup3: validGroups.group3.includes(index),
+				group4,
+				validGroup4: validGroups.group4.includes(index),
+				group5,
+				validGroup5: validGroups.group5.includes(index),
 			});
-		},
-		[setDisplaysChecked, group1, group2, group3, group4, group5]
-	);
+
+			if (checked) {
+				return Array.from(new Set([...prev, index]));
+			}
+
+			// If unchecked, remove the index from the array along with any grouped indices
+			if (group1 && validGroups.group1.includes(index)) {
+				prev = prev.filter((id) => !validGroups.group1.includes(id));
+			}
+			if (group2 && validGroups.group2.includes(index)) {
+				prev = prev.filter((id) => !validGroups.group2.includes(id));
+			}
+			if (group3 && validGroups.group3.includes(index)) {
+				prev = prev.filter((id) => !validGroups.group3.includes(id));
+			}
+			if (group4 && validGroups.group4.includes(index)) {
+				prev = prev.filter((id) => !validGroups.group4.includes(id));
+			}
+			if (group5 && validGroups.group5.includes(index)) {
+				prev = prev.filter((id) => !validGroups.group5.includes(id));
+			}
+
+			prev = prev.filter((id) => id !== index);
+
+			return Array.from(new Set(prev));
+		});
+	};
 
 	const videoWallDisplayProps: VideoWallDestinationProps[] = React.useMemo(
 		() => [
@@ -290,15 +279,7 @@ const VideoWallContainer = ({ layoutEditMode }: VideoWallContainerProps) => {
 				},
 				showCheckbox: layoutEditMode,
 				checked: displaysChecked.includes(2),
-				onChecked: (checked) => {
-					setDisplaysChecked((prev) => {
-						if (checked) {
-							return [...prev, 2];
-						} else {
-							return prev.filter((id) => id !== 2);
-						}
-					});
-				},
+				onChecked: (checked) => handleGroupSelection(2, checked),
 				cols: group1 ? 2 : 1,
 				rows: group1 ? 2 : 1,
 			},
