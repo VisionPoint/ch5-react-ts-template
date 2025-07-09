@@ -11,17 +11,9 @@ import {
 } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppLayout from './components/AppLayout';
-
-// Pages
-import SplashPage from './pages/SplashPage';
-import AdminPage from './pages/AdminPage';
-import Seat1Page from './pages/Seat1Page';
-import Seat2Page from './pages/Seat2Page';
-import Seat3Page from './pages/Seat3Page';
-import Seat4Page from './pages/Seat4Page';
-import Seat5Page from './pages/Seat5Page';
-import SupervisorPage from './pages/SuperVisorPage';
+import Typography from '@mui/material/Typography';
 import SourceStateManager from './components/SourceStateManager';
+import SplashPage from './pages/SplashPage';
 
 // Initialize eruda for panel/app debugging capabilities (in dev mode only)
 if (import.meta.env.VITE_APP_ENV === 'development') {
@@ -40,20 +32,8 @@ const router = createRouter([
 		element: <AppLayout />,
 		children: [
 			{
-				path: 'seat1',
-				element: <Seat1Page />,
-			},
-			{
-				path: 'seat2',
-				element: <Seat2Page />,
-			},
-			{
-				path: 'seat3',
-				element: <Seat3Page />,
-			},
-			{
-				path: 'seat4',
-				element: <Seat4Page />,
+				path: 'test1',
+				element: <Typography>Test Page</Typography>,
 			},
 			{
 				path: 'seat5',
@@ -84,41 +64,45 @@ function App() {
 
 	useWebXPanel(webXPanelConfig);
 
+	const visionPointTheme = createTheme({
+		palette: {
+			mode: 'dark',
+			primary: {
+				main: '#BF97C6',
+			},
+			secondary: {
+				main: '#F15D22',
+			},
+		},
+	});
+
+	const zoomTheme = createTheme({
+		palette: {
+			mode: 'light',
+			primary: {
+				main: '#0E72ED',
+			},
+			secondary: {
+				main: '#F26D21',
+			},
+		},
+	});
+
+	const clientTheme = createTheme({
+		palette: {
+			mode: 'dark',
+			primary: {
+				main: '#1E2A44',
+			},
+			secondary: {
+				main: '#12A8DF',
+			},
+		},
+	});
+
 	return (
 		<StyledEngineProvider injectFirst>
-			<ThemeProvider
-				theme={createTheme({
-					palette: {
-						mode: 'dark',
-						primary: {
-							main: '#1E2A44', // Lighten the primary color for better contrast
-						},
-						secondary: {
-							main: '#12A8DF',
-						},
-						// background: {
-						// 	default: 'rgb(247,247,252)',
-						// 	paper: '#FFFFFF',
-						// },
-						// text: {
-						// 	primary: 'rgba(0, 0, 0, 0.87)',
-						// 	secondary: 'rgba(0, 0, 0, 0.87) !important',
-						// },
-					},
-					mixins: {
-						toolbar: {
-							minHeight: 100,
-							'@media (min-width:0px) and (orientation: landscape)':
-								{
-									minHeight: 100,
-								},
-							'@media (min-width:600px)': {
-								minHeight: 100,
-							},
-						},
-					},
-				})}
-			>
+			<ThemeProvider theme={visionPointTheme}>
 				<CssBaseline enableColorScheme />
 				<SourceStateManager />
 				<RouterProvider router={router} />

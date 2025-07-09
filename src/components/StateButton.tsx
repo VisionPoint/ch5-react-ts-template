@@ -1,6 +1,8 @@
+import React from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Stack, { StackProps } from '@mui/material/Stack';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import { darken, lighten } from '@mui/material/styles';
 
 interface StateButtonProps {
 	orientation?: 'horizontal' | 'vertical';
@@ -18,19 +20,43 @@ interface StateButtonProps {
 const StateButton = ({
 	orientation = 'vertical',
 	active,
-	activeColor = 'secondary.main',
+	activeColor,
 	label,
 	icon,
 	slotProps,
 }: StateButtonProps) => {
+	const ref = React.useRef<HTMLButtonElement>(null);
+	const [bgcolor, setBgColor] = React.useState<string | null>(
+		slotProps?.button?.sx?.bgcolor || null
+	);
+
+	React.useEffect(() => {
+		if (ref.current) {
+			const computedStyle = window.getComputedStyle(ref.current);
+			const backgroundColor = computedStyle.backgroundColor;
+
+			if (active) {
+				setBgColor(activeColor || darken(backgroundColor, 0.33)); // Default to primary color if active
+			} else {
+				setBgColor(slotProps?.button?.sx?.bgcolor || null);
+			}
+		}
+	}, [active, activeColor, slotProps?.button?.sx?.bgcolor]);
+
 	return (
 		<Button
 			variant='contained'
 			{...slotProps?.button}
 			sx={{
-				bgcolor: active ? activeColor : null,
+				bgcolor,
+				color: active ? 'text.primary' : null,
+				// boxShadow: (theme) =>
+				// 	active
+				// 		? `0px 0px 1px 1px ${theme.palette.primary.light}`
+				// 		: 'none',
 				...slotProps?.button?.sx,
 			}}
+			ref={ref}
 		>
 			<Stack
 				direction={orientation === 'vertical' ? 'column' : 'row'}
@@ -56,6 +82,7 @@ const StateButton = ({
 							fontSize={26}
 							{...slotProps?.typography}
 							key={index}
+							color='inherit'
 						>
 							{text}
 						</Typography>

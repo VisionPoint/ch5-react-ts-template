@@ -6,9 +6,6 @@ import Stack from '@mui/material/Stack';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
-import SecurityIcon from '@mui/icons-material/Security';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import SettingsIcon from '@mui/icons-material/Settings';
 import StateButton from './StateButton';
 import { pageTitleState } from '../state management/atoms';
 import PageTitleBar from './PageTitleBar';
@@ -25,34 +22,17 @@ const AppLayout = () => {
 	React.useEffect(() => {
 		// Set the page title based on the current route
 		const path = location.pathname.split('/')[1];
-		document.title = path
-			? `Command Center - ${path.toUpperCase()}`
-			: 'Command Center';
+		document.title = path ? `${path.toUpperCase()}` : 'Test Application';
 
 		switch (path) {
-			case 'seat1':
-				setPageTitle('EH-COMMS (Seat 1)');
+			case 'test1':
+				setPageTitle('Test 1');
 				break;
-			case 'seat2':
-				setPageTitle('MT COMMS (Seat 2)');
-				break;
-			case 'seat3':
-				setPageTitle('EH (Seat 3)');
-				break;
-			case 'seat4':
-				setPageTitle('EH (Seat 4)');
-				break;
-			case 'seat5':
-				setPageTitle('MT (Seat 5)');
-				break;
-			case 'supervisor':
-				setPageTitle('Supervisor');
-				break;
-			case 'admin':
-				setPageTitle('Admin');
+			case 'test2':
+				setPageTitle('Test 2');
 				break;
 			default:
-				setPageTitle('Command Center');
+				setPageTitle('Test');
 		}
 	}, [location.pathname, setPageTitle]);
 
@@ -73,16 +53,17 @@ const AppLayout = () => {
 					}}
 				>
 					<Stack
+						spacing={4}
 						sx={{ height: '100%' }}
-						justifyContent={'space-between'}
+						//justifyContent={'space-between'}
 					>
 						<StateButton
 							icon={<CrisisAlertIcon sx={{ fontSize: 60 }} />}
-							label={['EH-COMMS', '(Seat 1)']}
-							active={location.pathname === '/seat1'}
+							label={['Test 1']}
+							active={location.pathname === '/test1'}
 							slotProps={{
 								button: {
-									onClick: () => navigate('/seat1'),
+									onClick: () => navigate('/test1'),
 								},
 								stack: {
 									sx: {
@@ -94,95 +75,13 @@ const AppLayout = () => {
 
 						<StateButton
 							icon={<CrisisAlertIcon sx={{ fontSize: 60 }} />}
-							label={['MT COMMS', '(Seat 2)']}
-							active={location.pathname === '/seat2'}
+							label={['Test 2']}
+							active={location.pathname === '/test2'}
 							slotProps={{
 								button: {
-									onClick: () => navigate('/seat2'),
+									onClick: () => navigate('/test2'),
 								},
 								stack: {
-									sx: {
-										py: 1,
-									},
-								},
-							}}
-						/>
-						<StateButton
-							icon={<SecurityIcon sx={{ fontSize: 60 }} />}
-							label={['EH (Seat 3)']}
-							active={location.pathname === '/seat3'}
-							slotProps={{
-								button: {
-									onClick: () => navigate('/seat3'),
-								},
-								stack: {
-									sx: {
-										py: 1,
-									},
-								},
-							}}
-						/>
-
-						<StateButton
-							icon={<SecurityIcon sx={{ fontSize: 60 }} />}
-							label={['EH (Seat 4)']}
-							active={location.pathname === '/seat4'}
-							slotProps={{
-								button: {
-									onClick: () => navigate('/seat4'),
-								},
-								stack: {
-									sx: {
-										py: 1,
-									},
-								},
-							}}
-						/>
-
-						<StateButton
-							icon={<SecurityIcon sx={{ fontSize: 60 }} />}
-							label={['MT (Seat 5)']}
-							active={location.pathname === '/seat5'}
-							slotProps={{
-								button: {
-									onClick: () => navigate('/seat5'),
-								},
-								stack: {
-									sx: {
-										py: 1,
-									},
-								},
-							}}
-						/>
-
-						<StateButton
-							icon={
-								<AdminPanelSettingsIcon sx={{ fontSize: 60 }} />
-							}
-							label={['Supervisor']}
-							active={location.pathname === '/supervisor'}
-							slotProps={{
-								button: {
-									onClick: () => navigate('/supervisor'),
-								},
-								stack: {
-									sx: {
-										py: 1,
-									},
-								},
-							}}
-						/>
-
-						<StateButton
-							icon={<SettingsIcon sx={{ fontSize: 60 }} />}
-							label={['Admin']}
-							active={location.pathname === '/admin'}
-							slotProps={{
-								button: {
-									onClick: () => navigate('/admin'),
-								},
-								stack: {
-									//spacing: 2,
 									sx: {
 										py: 1,
 									},

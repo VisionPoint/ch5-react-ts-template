@@ -114,9 +114,7 @@ function App() {
       <div/>
    )
 }
-```
-
-### Installing Font Awesome
+```### Installing Font Awesome
 FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/fontawesome-svg-core
 FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/free-brands-svg-icons
 FONTAWESOME_PACKAGE_TOKEN=97F96D3F-5BAC-413D-9597-99FCDB15FF7A npm install --save @fortawesome/pro-solid-svg-icons
