@@ -12,6 +12,8 @@ import {
 import CssBaseline from '@mui/material/CssBaseline';
 import AppLayout from './components/AppLayout';
 import Typography from '@mui/material/Typography';
+import SourceStateManager from './components/SourceStateManager';
+import SplashPage from './pages/SplashPage';
 
 // Initialize eruda for panel/app debugging capabilities (in dev mode only)
 if (import.meta.env.VITE_APP_ENV === 'development') {
@@ -23,14 +25,14 @@ if (import.meta.env.VITE_APP_ENV === 'development') {
 const router = createRouter([
 	{
 		path: '/splash',
-		element: <>Splash Screen</>,
+		element: <SplashPage />,
 	},
 	{
 		path: '/',
 		element: <AppLayout />,
 		children: [
 			{
-				path: 'test',
+				path: 'test1',
 				element: <Typography>Test Page</Typography>,
 			},
 			{
@@ -54,30 +56,47 @@ function App() {
 
 	useWebXPanel(webXPanelConfig);
 
+	const visionPointTheme = createTheme({
+		palette: {
+			mode: 'dark',
+			primary: {
+				main: '#BF97C6',
+			},
+			secondary: {
+				main: '#F15D22',
+			},
+		},
+	});
+
+	const zoomTheme = createTheme({
+		palette: {
+			mode: 'light',
+			primary: {
+				main: '#0E72ED',
+			},
+			secondary: {
+				main: '#F26D21',
+			},
+		},
+	});
+
+	const clientTheme = createTheme({
+		palette: {
+			mode: 'dark',
+			primary: {
+				main: '#1E2A44',
+			},
+			secondary: {
+				main: '#12A8DF',
+			},
+		},
+	});
+
 	return (
 		<StyledEngineProvider injectFirst>
-			<ThemeProvider
-				theme={createTheme({
-					palette: {
-						mode: 'dark',
-						primary: {
-							main: '#1E2A44',
-						},
-						secondary: {
-							main: '#12A8DF',
-						},
-						// background: {
-						// 	default: 'rgb(247,247,252)',
-						// 	paper: '#FFFFFF',
-						// },
-						// text: {
-						// 	primary: 'rgba(0, 0, 0, 0.87)',
-						// 	secondary: 'rgba(0, 0, 0, 0.87) !important',
-						// },
-					},
-				})}
-			>
+			<ThemeProvider theme={visionPointTheme}>
 				<CssBaseline enableColorScheme />
+				<SourceStateManager />
 				<RouterProvider router={router} />
 			</ThemeProvider>
 		</StyledEngineProvider>

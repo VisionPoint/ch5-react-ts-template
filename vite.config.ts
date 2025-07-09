@@ -30,7 +30,11 @@ export default (config: { mode: string }) => {
 						dest: '',
 					},
 					{
-						src: 'src/assets/images/favicon.ico',
+						src: 'src/assets/images/client-logo.png',
+						dest: 'assets/',
+					},
+					{
+						src: 'src/assets/images/client-logo-favicon.png',
 						dest: 'assets/',
 					},
 					{
