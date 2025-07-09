@@ -36,8 +36,16 @@ const router = createRouter([
 				element: <Typography>Test Page</Typography>,
 			},
 			{
-				path: 'test2',
-				element: <Typography>Test Page 2</Typography>,
+				path: 'seat5',
+				element: <Seat5Page />,
+			},
+			{
+				path: 'supervisor',
+				element: <SupervisorPage />,
+			},
+			{
+				path: 'admin',
+				element: <AdminPage />,
 			},
 		],
 	},
