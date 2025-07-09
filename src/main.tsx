@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { SnackbarProvider } from 'notistack';
 import App from './App.tsx';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -21,6 +22,13 @@ library.add(fab, fas, far, fal, fat, fad, fass, fasr, fasl, fast);
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<App />
+		<SnackbarProvider
+			preventDuplicate
+			maxSnack={5}
+			anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+			disableWindowBlurListener
+		>
+			<App />
+		</SnackbarProvider>
 	</StrictMode>
 );

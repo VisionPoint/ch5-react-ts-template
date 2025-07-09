@@ -36,9 +36,15 @@ const StateButton = ({
 				direction={orientation === 'vertical' ? 'column' : 'row'}
 				spacing={orientation === 'vertical' ? 0.5 : 2}
 				alignItems='center'
-				justifyContent='center'
-				sx={{ py: 2 }}
+				justifyContent={
+					orientation === 'vertical' ? 'space-around' : 'center'
+				}
 				{...slotProps?.stack}
+				sx={{
+					height: orientation === 'vertical' ? '100%' : null,
+					py: orientation === 'vertical' ? 0 : 2,
+					...slotProps?.stack?.sx,
+				}}
 			>
 				{icon}
 

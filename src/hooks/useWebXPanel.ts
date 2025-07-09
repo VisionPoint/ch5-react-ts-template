@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react';
+import { enqueueSnackbar } from 'notistack';
 
 type WebXPanelConfig = {
 	host: string;
@@ -33,9 +34,17 @@ const useWebXPanel = (params: WebXPanelConfig) => {
 
 			const connectWsListener = () => {
 				console.log('WebXPanel websocket connection success');
+				enqueueSnackbar('WebXPanel websocket connection success!', {
+					variant: 'success',
+					autoHideDuration: 3000,
+				});
 			};
 
 			const errorWsListener = ({ detail }: any) => {
+				enqueueSnackbar('WebXPanel websocket connection error!', {
+					variant: 'error',
+					autoHideDuration: 3000,
+				});
 				console.log(
 					`WebXPanel websocket connection error: ${JSON.stringify(
 						detail,
@@ -46,10 +55,17 @@ const useWebXPanel = (params: WebXPanelConfig) => {
 			};
 
 			const connectCipListener = () => {
-				console.log('WebXPanel CIP connection success');
+				enqueueSnackbar('Control system connection established!', {
+					variant: 'success',
+					autoHideDuration: 3000,
+				});
 			};
 
 			const authenticationFailedListener = ({ detail }: any) => {
+				enqueueSnackbar('WebXPanel authentication failed!', {
+					variant: 'error',
+					autoHideDuration: 3000,
+				});
 				console.log(
 					`WebXPanel authentication failed: ${JSON.stringify(
 						detail,
@@ -60,6 +76,10 @@ const useWebXPanel = (params: WebXPanelConfig) => {
 			};
 
 			const notAuthorizedListener = ({ detail }: any) => {
+				enqueueSnackbar('WebXPanel not authorized!', {
+					variant: 'error',
+					autoHideDuration: 3000,
+				});
 				console.log(
 					`WebXPanel not authorized: ${JSON.stringify(
 						detail,
@@ -71,6 +91,10 @@ const useWebXPanel = (params: WebXPanelConfig) => {
 			};
 
 			const disconnectWsListener = ({ detail }: any) => {
+				enqueueSnackbar('WebXPanel websocket connection lost!', {
+					variant: 'error',
+					autoHideDuration: 3000,
+				});
 				console.log(
 					`WebXPanel websocket connection lost: ${JSON.stringify(
 						detail,
@@ -81,6 +105,10 @@ const useWebXPanel = (params: WebXPanelConfig) => {
 			};
 
 			const disconnectCipListener = ({ detail }: any) => {
+				enqueueSnackbar('WebXPanel CIP connection lost!', {
+					variant: 'error',
+					autoHideDuration: 3000,
+				});
 				console.log(
 					`WebXPanel CIP connection lost: ${JSON.stringify(
 						detail,

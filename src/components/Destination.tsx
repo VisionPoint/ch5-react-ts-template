@@ -6,12 +6,15 @@ import Typography from '@mui/material/Typography';
 import ButtonBase, { ButtonBaseProps } from '@mui/material/ButtonBase';
 import { SvgIconProps } from '@mui/material/SvgIcon';
 import Checkbox from '@mui/material/Checkbox';
+import { FontAwesomeIconProps } from './FontAwesomeIcon';
+
+//import BlockIcon from '@mui/icons-material/Block';
 
 export interface DestinationProps {
 	disabled?: boolean;
 	label?: string;
 	source?: string;
-	sourceIcon?: React.ReactElement<SvgIconProps>;
+	sourceIcon?: React.ReactElement<SvgIconProps | FontAwesomeIconProps>;
 	minHeight?: number;
 	minWidth?: number | string;
 	color?: string;
@@ -39,9 +42,18 @@ const Destination = ({
 	onChecked,
 }: DestinationProps) => {
 	return (
-		<Box sx={{ pointerEvents: disabled ? 'none' : 'auto' }}>
+		<Box
+			sx={{
+				pointerEvents: disabled ? 'none' : 'auto',
+				//height: minHeight ? minHeight - 16 : '100%',
+				//display: 'flex',
+				//flexDirection: 'column',
+				//flex: 'auto',
+				opacity: disabled ? 0.5 : 1,
+			}}
+		>
 			{label && (
-				<Typography color={color} textAlign={'center'} sx={{ m: 1 }}>
+				<Typography color={color} textAlign={'center'} sx={{ p: 1 }}>
 					{label}
 				</Typography>
 			)}
@@ -50,10 +62,12 @@ const Destination = ({
 					border: 8,
 					borderRadius: 1,
 					borderColor: borderColor,
-					minHeight,
+					//minHeight,
 					minWidth,
-					display: 'flex',
+					//display: 'flex',
 					position: 'relative',
+					//flex: 'auto',
+					//height: '100%',
 				}}
 			>
 				{showCheckbox && (
@@ -77,21 +91,26 @@ const Destination = ({
 					{...slotProps.button}
 					onClick={() => showCheckbox && onChecked?.(!checked)}
 					sx={{
-						height: minHeight ? minHeight - 16 : '100%',
+						//height: minHeight ? minHeight - 16 : '100%',
 						width: '100%',
 						...slotProps.button?.sx,
 					}}
 					disabled={disabled}
 				>
 					<Paper
-						sx={{ flexGrow: 1, p: 1, height: '100%' }}
+						sx={{
+							//flexGrow: 0,
+							p: 1,
+							//height: '100%',
+							width: '100%',
+						}}
 						elevation={1}
 						square
 					>
 						<Stack
 							spacing={0}
 							sx={{
-								height: '100%',
+								height: minHeight ? minHeight - 16 : '100%',
 								width: '100%',
 								display: 'flex',
 								alignItems: 'center',
@@ -99,14 +118,25 @@ const Destination = ({
 							}}
 						>
 							{sourceIcon && (
-								<Box sx={{ color }}>
+								<Box sx={{ color, display: 'flex' }}>
 									{React.cloneElement(sourceIcon, {
 										fontSize: 'inherit',
 										sx: { fontSize: 50 },
+										svg: {
+											sx: {
+												height: 40,
+												width: 40,
+											},
+										},
 									})}
 								</Box>
 							)}
-							<Typography variant='h6' color={color}>
+							<Typography
+								variant='h6'
+								color={color}
+								//noWrap
+								//sx={{ maxWidth: 178 }}
+							>
 								{source || 'No Source'}
 							</Typography>
 						</Stack>

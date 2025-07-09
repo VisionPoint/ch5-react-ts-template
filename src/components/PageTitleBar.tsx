@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import HelpIcon from '@mui/icons-material/Help';
 import SettingsIcon from '@mui/icons-material/Settings';
-import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { useAtomValue } from 'jotai';
 import { pageTitleState } from '../state management/atoms';
+import ShutdownPopup from './ShutdownPopup';
 
 const PageTitleBar = () => {
 	const pageTitle = useAtomValue(pageTitleState);
@@ -30,9 +30,7 @@ const PageTitleBar = () => {
 						<IconButton color='inherit' size={'large'}>
 							<SettingsIcon fontSize='large' />
 						</IconButton>
-						<IconButton color='inherit' size={'large'}>
-							<PowerSettingsNewIcon fontSize='large' />
-						</IconButton>
+						<ShutdownPopup />
 					</Stack>
 				</Toolbar>
 			</AppBar>

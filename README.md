@@ -26,6 +26,7 @@ Use the command ```websockettoken``` to get the current token is already generat
 Use the command ```webserver allowsharedsession``` to check the current value. If necessary, use ```webserver allowsharedsession on``` to enable this setting.
 In the processor web GUI, go to Settings > System Setup > Web XPanel and ensure ```Web XPanel Enabled``` is set to true.
 Keep in mind we have to use the memory router when this panel runs on the control system directly. When using the app, only programmatic routing will work.
+Sometimes the XPanel mysteriously stops working. Just open up the processor's web GUI and login again and this will typically fix the issue.
 
 ## The entry point
 The entry point is where the Crestron libraries (UMD) will be loaded into the application. In this demo index.html is treated as the entry point for the Crestron libraries.

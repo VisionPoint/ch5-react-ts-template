@@ -38,6 +38,10 @@ export default (config: { mode: string }) => {
 						dest: 'assets/',
 					},
 					{
+						src: 'src/assets/images/PW-LOGO.png',
+						dest: 'assets/',
+					},
+					{
 						src: 'src/assets/images/screenshot_narrow.jpg',
 						dest: 'assets/',
 					},

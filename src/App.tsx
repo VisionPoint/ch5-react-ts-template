@@ -8,12 +8,12 @@ import {
 	createTheme,
 	ThemeProvider,
 	StyledEngineProvider,
-	lighten,
 } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppLayout from './components/AppLayout';
 
 // Pages
+import SplashPage from './pages/SplashPage';
 import AdminPage from './pages/AdminPage';
 import Seat1Page from './pages/Seat1Page';
 import Seat2Page from './pages/Seat2Page';
@@ -21,6 +21,7 @@ import Seat3Page from './pages/Seat3Page';
 import Seat4Page from './pages/Seat4Page';
 import Seat5Page from './pages/Seat5Page';
 import SupervisorPage from './pages/SuperVisorPage';
+import SourceStateManager from './components/SourceStateManager';
 
 // Initialize eruda for panel/app debugging capabilities (in dev mode only)
 if (import.meta.env.VITE_APP_ENV === 'development') {
@@ -32,7 +33,7 @@ if (import.meta.env.VITE_APP_ENV === 'development') {
 const router = createRouter([
 	{
 		path: '/splash',
-		element: <>Splash Screen</>,
+		element: <SplashPage />,
 	},
 	{
 		path: '/',
@@ -119,6 +120,7 @@ function App() {
 				})}
 			>
 				<CssBaseline enableColorScheme />
+				<SourceStateManager />
 				<RouterProvider router={router} />
 			</ThemeProvider>
 		</StyledEngineProvider>

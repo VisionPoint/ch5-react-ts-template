@@ -69,82 +69,123 @@ const AppLayout = () => {
 					component={'nav'}
 					size={navWidth}
 					sx={{
-						p: 4,
+						p: 3,
 					}}
 				>
-					<Stack spacing={4}>
+					<Stack
+						sx={{ height: '100%' }}
+						justifyContent={'space-between'}
+					>
 						<StateButton
-							icon={<CrisisAlertIcon fontSize='large' />}
+							icon={<CrisisAlertIcon sx={{ fontSize: 60 }} />}
 							label={['EH-COMMS', '(Seat 1)']}
 							active={location.pathname === '/seat1'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/seat1'),
 								},
+								stack: {
+									sx: {
+										py: 1,
+									},
+								},
 							}}
 						/>
 
 						<StateButton
-							icon={<CrisisAlertIcon fontSize='large' />}
+							icon={<CrisisAlertIcon sx={{ fontSize: 60 }} />}
 							label={['MT COMMS', '(Seat 2)']}
 							active={location.pathname === '/seat2'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/seat2'),
 								},
+								stack: {
+									sx: {
+										py: 1,
+									},
+								},
 							}}
 						/>
 						<StateButton
-							icon={<SecurityIcon fontSize='large' />}
+							icon={<SecurityIcon sx={{ fontSize: 60 }} />}
 							label={['EH (Seat 3)']}
 							active={location.pathname === '/seat3'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/seat3'),
 								},
+								stack: {
+									sx: {
+										py: 1,
+									},
+								},
 							}}
 						/>
 
 						<StateButton
-							icon={<SecurityIcon fontSize='large' />}
+							icon={<SecurityIcon sx={{ fontSize: 60 }} />}
 							label={['EH (Seat 4)']}
 							active={location.pathname === '/seat4'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/seat4'),
 								},
+								stack: {
+									sx: {
+										py: 1,
+									},
+								},
 							}}
 						/>
 
 						<StateButton
-							icon={<SecurityIcon fontSize='large' />}
+							icon={<SecurityIcon sx={{ fontSize: 60 }} />}
 							label={['MT (Seat 5)']}
 							active={location.pathname === '/seat5'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/seat5'),
 								},
+								stack: {
+									sx: {
+										py: 1,
+									},
+								},
 							}}
 						/>
 
 						<StateButton
-							icon={<AdminPanelSettingsIcon fontSize='large' />}
+							icon={
+								<AdminPanelSettingsIcon sx={{ fontSize: 60 }} />
+							}
 							label={['Supervisor']}
 							active={location.pathname === '/supervisor'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/supervisor'),
 								},
+								stack: {
+									sx: {
+										py: 1,
+									},
+								},
 							}}
 						/>
 
 						<StateButton
-							icon={<SettingsIcon fontSize='large' />}
+							icon={<SettingsIcon sx={{ fontSize: 60 }} />}
 							label={['Admin']}
 							active={location.pathname === '/admin'}
 							slotProps={{
 								button: {
 									onClick: () => navigate('/admin'),
+								},
+								stack: {
+									//spacing: 2,
+									sx: {
+										py: 1,
+									},
 								},
 							}}
 						/>
