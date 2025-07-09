@@ -33,19 +33,11 @@ const router = createRouter([
 		children: [
 			{
 				path: 'test1',
-				element: <Typography>Test Page</Typography>,
+				element: <Typography>Test 1 Page</Typography>,
 			},
 			{
-				path: 'seat5',
-				element: <Seat5Page />,
-			},
-			{
-				path: 'supervisor',
-				element: <SupervisorPage />,
-			},
-			{
-				path: 'admin',
-				element: <AdminPage />,
+				path: 'test2',
+				element: <Typography>Test 2 Page</Typography>,
 			},
 		],
 	},
